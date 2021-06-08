@@ -73,10 +73,7 @@ function Index() {
     if (window.location.href.split("/select=")[1]) {
       const arr = select;
       for (let i = 0; i < arr.length; i += 1) {
-        if (
-          arr[i].name ===
-          window.location.href.split("/select=")[1]
-        ) {
+        if (arr[i].name === window.location.href.split("/select=")[1]) {
           arr[i].select = true;
         } else {
           arr[i].select = false;
@@ -131,27 +128,27 @@ function Index() {
       case "All":
         return getDataDownApi(
           `https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&type=Repositories&page=${page +
-          1}`
+            1}`
         );
       case "Javascript":
         return getDataDownApi(
           `https://api.github.com/search/repositories?q=stars:%3E1+language:javascript&sort=stars&order=desc&type=Repositories&page=${page +
-          1}`
+            1}`
         );
       case "Ruby":
         return getDataDownApi(
           `https://api.github.com/search/repositories?q=stars:%3E1+language:ruby&sort=stars&order=desc&type=Repositories&page=${page +
-          1}`
+            1}`
         );
       case "Java":
         return getDataDownApi(
           `https://api.github.com/search/repositories?q=stars:%3E1+language:java&sort=stars&order=desc&type=Repositories&page=${page +
-          1}`
+            1}`
         );
       case "CSS":
         return getDataDownApi(
           `https://api.github.com/search/repositories?q=stars:%3E1+language:css&sort=stars&order=desc&type=Repositories&page=${page +
-          1}`
+            1}`
         );
 
       default:
@@ -207,9 +204,10 @@ function Index() {
   }, []);
 
   const changeData = (event, item) => {
-    event.preventDefault()
-    const valiable = `${window.location.href.split("/select")[0]}/select=${item.name
-      }`;
+    event.preventDefault();
+    const valiable = `${window.location.href.split("/select")[0]}/select=${
+      item.name
+    }`;
     console.log(valiable);
     window.history.pushState({}, 0, valiable);
     const arr = select;
@@ -258,14 +256,9 @@ function Index() {
       >
         {select.map((item, index) => (
           <a
-            className={
-              item.select
-                ?
-                styles.active_light
-                : ""
-            }
+            className={item.select ? styles.active_light : ""}
             key={index}
-            onClick={(event) => changeData(event,item)}
+            onClick={event => changeData(event, item)}
             // role='button'
             href="#"
           >
